@@ -22,8 +22,6 @@ data_in <- "/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_pred
 data_out <- "/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/data/clean/airbnb_tokio_cleaned.csv"
 data <- read_csv(data_in)
 
-#irrelevant_dummies <- which(colMeans(data %>% select(matches("^d_.*"))) < 0.05) %>% names()
-#data <- data[,-which(names(data) %in% irrelevant_dummies)]
 
 # keep if property type is Apartment, House or Townhouse
 table(data$property_type)
@@ -180,7 +178,7 @@ summary(data$usd_price_day)
 data <- data %>%
   mutate(ln_usd_price_day = log(usd_price_day))
 data <- data %>%
-  filter(usd_price_day <1000)
+  filter(usd_price_day <275)
 
 
 # Squares and further values to create

@@ -1,0 +1,98 @@
+"variable","ols_coefficient"
+"(Intercept)",-24.9948416619646
+"n_accommodates",11.3680315525099
+"n_beds",2.95486415095022
+"n_days_since",0.0147832404403449
+"f_neighbourhood_cleansedAkiruno Shi",-6.90543205311912
+"f_neighbourhood_cleansedAkishima Shi",3.76675677801862
+"f_neighbourhood_cleansedArakawa Ku",13.6951207925801
+"f_neighbourhood_cleansedBunkyo Ku",30.9378778285564
+"f_neighbourhood_cleansedChiyoda Ku",70.9787004669702
+"f_neighbourhood_cleansedChofu Shi",23.3145077923912
+"f_neighbourhood_cleansedChuo Ku",12.3386950291775
+"f_neighbourhood_cleansedEdogawa Ku",-0.739615046861824
+"f_neighbourhood_cleansedFuchu Shi",NA
+"f_neighbourhood_cleansedFussa Shi",-48.9982338481745
+"f_neighbourhood_cleansedHamura Shi",78.3822341946498
+"f_neighbourhood_cleansedHigashimurayama Shi",0.164300301827909
+"f_neighbourhood_cleansedHino Shi",-23.9011238083171
+"f_neighbourhood_cleansedItabashi Ku",10.738668691821
+"f_neighbourhood_cleansedKatsushika Ku",2.85664614816079
+"f_neighbourhood_cleansedKita Ku",-7.53512396053043
+"f_neighbourhood_cleansedKodaira Shi",-17.9975088690364
+"f_neighbourhood_cleansedKoganei Shi",-50.2281667617225
+"f_neighbourhood_cleansedKokubunji Shi",42.2112301907006
+"f_neighbourhood_cleansedKomae Shi",158.657970282084
+"f_neighbourhood_cleansedKoto Ku",-0.618343865419204
+"f_neighbourhood_cleansedKunitachi Shi",-1.12397450485116
+"f_neighbourhood_cleansedMachida Shi",-14.6606335023656
+"f_neighbourhood_cleansedMeguro Ku",49.901713151068
+"f_neighbourhood_cleansedMinato Ku",46.0985313026423
+"f_neighbourhood_cleansedMitaka Shi",53.5009044045113
+"f_neighbourhood_cleansedMusashino Shi",59.7684542462622
+"f_neighbourhood_cleansedNakano Ku",15.0573643159417
+"f_neighbourhood_cleansedNerima Ku",10.87646291187
+"f_neighbourhood_cleansedNishitokyo Shi",57.5964117077161
+"f_neighbourhood_cleansedOme Shi",-80.5050298817738
+"f_neighbourhood_cleansedOta Ku",10.5224904867042
+"f_neighbourhood_cleansedSetagaya Ku",16.9317236168901
+"f_neighbourhood_cleansedShibuya Ku",34.4570582026759
+"f_neighbourhood_cleansedShinagawa Ku",21.3570924447927
+"f_neighbourhood_cleansedShinjuku Ku",20.5523075640235
+"f_neighbourhood_cleansedSuginami Ku",12.1814056437127
+"f_neighbourhood_cleansedSumida Ku",10.0498077940288
+"f_neighbourhood_cleansedTachikawa Shi",115.696362936124
+"f_neighbourhood_cleansedTaito Ku",26.7319937563989
+"f_neighbourhood_cleansedTama Shi",-19.1686793485176
+"f_neighbourhood_cleansedToshima Ku",19.0236627079388
+"f_room_typePrivate room",-2.57364074151579
+"f_room_typeShared room",-1.40313791751002
+"n_number_of_reviews",-0.0961231899098303
+"flag_n_number_of_reviews",-32.4792245485783
+"n_review_scores_rating",0.337784096424632
+"flag_review_scores_rating",39.5821077663258
+"d_airconditioning",6.32864464397868
+"d_bathtub",1.82577889574349
+"d_bedlinens",-1.56223573045304
+"d_bodysoap",-3.37660950450301
+"d_carbonmonoxidealarm",-7.39120178617251
+"d_coffeemaker",5.70708502014051
+"d_conditioner",-8.16009120727656
+"d_cookingbasics",5.68842536038242
+"d_dedicatedworkspace",0.391441783317204
+"d_dishesandsilverware",3.89286107901727
+"d_dryer",2.05205768142345
+"d_elevator",5.99507644542145
+"d_essentials",-1.53519946556408
+"d_ethernetconnection",12.476020553066
+"d_extrapillowsandblankets",6.55244873649783
+"d_fireextingr",-9.06641425867976
+"d_firstaidkit",2.46028032485774
+"d_hairdryer",-1.08355885014998
+"d_hangers",6.77769192689441
+"d_heating",3.1131204935079
+"d_hotthampoo",-15.7789870680824
+"d_hotwater",-5.49342069994163
+"d_iron",-2.47407739189352
+"d_keypad",-3.97533014135927
+"d_kitchen",1.18401788816509
+"d_ledropoffallowed",-4.74997254692717
+"d_lockonbedroomdoor",-6.84524833179023
+"d_lockbox",-11.6631941599952
+"d_longtermstaysallowed",2.60916892441453
+"d_microwave",10.0066667182805
+"d_oven",1.89589448488728
+"d_paidparkingoffpremises",0.901964179966278
+"d_patioorbalcony",3.93096593402043
+"d_privateentrance",5.27036555896859
+"d_refrigerator",-12.7745524102016
+"d_roomdarkeningshades",-8.41870692070163
+"d_shampoo",-13.1213994953839
+"d_showergel",3.2652449529744
+"d_singlelevelhome",-4.71422753207771
+"d_smartlock",1.09229193515529
+"d_smokealarm",7.69499181293884
+"d_washer",-1.41590190898806
+"d_stove_gas_or_elect",-1.71642021647195
+"d_tv",5.99358938738237
+"d_wifi",4.01781000183084

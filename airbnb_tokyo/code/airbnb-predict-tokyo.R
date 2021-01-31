@@ -22,6 +22,7 @@ library(xtable)
 
 data_in <- "/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/data/clean/airbnb_tokio_cleaned.csv"
 data_out <- ""
+output <- "/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/out/"
 #-----------------------------------------------------------------------------------------
 
 #########################################################################################
@@ -54,7 +55,6 @@ data <- data %>% filter(f_property_type == "Apartment")
 #data <- data %>% filter(f_room_type == "Entire home/apt")
 
 data <- data %>% filter(n_accommodates <= 6 & n_accommodates >= 2)
-
 
 # copy a variable - purpose later, see at variable importance
 data <- data %>% mutate(n_accommodates_copy = n_accommodates)
@@ -101,17 +101,15 @@ amenities <-  grep("^d_.*", names(data), value = TRUE)
 
 #interactions for the LASSO
 #TODO: do something about it
-# from ch14
-X1  <- c("n_accommodates*f_property_type",  "f_room_type*f_property_type",  "f_room_type*d_familykidfriendly",
-         "d_airconditioning*f_property_type", "d_cats*f_property_type", "d_dogs*f_property_type")
+
 # with boroughs
-X2  <- c("f_property_type*f_neighbourhood_cleansed", "f_room_type*f_neighbourhood_cleansed",
-         "n_accommodates*f_neighbourhood_cleansed" )
+X1  <- c("f_room_type*f_neighbourhood_cleansed", "f_room_type*f_neighbourhood_cleansed",
+         "n_accommodates*f_neighbourhood_cleansed", "d_elevator*f_neighbourhood_cleansed")
 
 
 predictors_1 <- c(basic_vars)
 predictors_2 <- c(basic_vars, reviews, amenities)
-predictors_E <- c(basic_vars, reviews, amenities, X1,X2)
+predictors_E <- c(basic_vars, reviews, amenities, X1)
 
 
 #########################################################################################
@@ -141,7 +139,7 @@ tune_grid <- expand.grid(
 set.seed(1234)
 system.time({
   rf_model_1 <- train(
-    formula(paste0("ln_usd_price_day ~", paste0(predictors_1, collapse = " + "))),
+    formula(paste0("usd_price_day ~", paste0(predictors_1, collapse = " + "))),
     data = data_train,
     method = "ranger",
     trControl = train_control,
@@ -150,6 +148,7 @@ system.time({
   )
 })
 rf_model_1
+write.csv(rf_model_1$results, paste0(output, "rf_model_1.csv"), row.names = F)
 
 # set tuning for benchamrk model (2)
 tune_grid <- expand.grid(
@@ -171,21 +170,22 @@ system.time({
 })
 
 rf_model_2
+write.csv(rf_model_2$results, paste0(output, "rf_model_2.csv"), row.names = F)
 
 #auto tuning first
-set.seed(1234)
-system.time({
-  rf_model_2auto <- train(
-    formula(paste0("usd_price_day ~", paste0(predictors_2, collapse = " + "))),
-    data = data_train,
-    method = "ranger",
-    trControl = train_control,
-    importance = "impurity"
-  )
-})
-rf_model_2auto 
+#set.seed(1234)
+#system.time({
+#  rf_model_2auto <- train(
+#    formula(paste0("usd_price_day ~", paste0(predictors_2, collapse = " + "))),
+#    data = data_train,
+#    method = "ranger",
+#    trControl = train_control,
+#    importance = "impurity"
+#  )
+#})
+#rf_model_2auto 
 #rf_model_2auto <-rf_model_2
-
+#write.csv(rf_model_2auto$results, paste0(output, "rf_model_2auto.csv"), row.names = F)
 
 
 
@@ -195,8 +195,8 @@ rf_model_2auto
 results <- resamples(
   list(
     model_1  = rf_model_1,
-    model_2  = rf_model_2,
-    model_2b = rf_model_2auto
+    model_2  = rf_model_2
+    #model_2b = rf_model_2auto
     
   )
 )
@@ -213,38 +213,37 @@ rf_tuning_modelB <- rf_model_2$results %>%
 kable(x = rf_tuning_modelB, format = "latex", digits = 2, caption = "CV RMSE") %>%
   add_header_above(c(" ", "vars" = 3)) %>%
   cat(.,file="/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/out/rf_tuning_modelB.tex")
-
+write.csv(rf_tuning_modelB, paste0(output, "rf_tuning_modelB.csv"), row.names = F)
 
 # Turning parameter choice 1
 result_1 <- matrix(c(
   rf_model_1$finalModel$mtry,
   rf_model_2$finalModel$mtry,
-  rf_model_2auto$finalModel$mtry,
   rf_model_1$finalModel$min.node.size,
-  rf_model_2$finalModel$min.node.size,
-  rf_model_2auto$finalModel$min.node.size
+  rf_model_2$finalModel$min.node.size
   
 ),
-nrow=3, ncol=2,
-dimnames = list(c("Model A", "Model B","Model B auto"),
+nrow=2, ncol=2,
+dimnames = list(c("Model A", "Model B"),
                 c("Min vars","Min nodes"))
 )
 kable(x = result_1, format = "latex", digits = 3) %>%
   cat(.,file="/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/out/rf_models_turning_choices.tex")
+write.csv(result_1, paste0(output, "rf_parameter_selection.csv"), row.names = T)
 
 # Turning parameter choice 2
 result_2 <- matrix(c(mean(results$values$`model_1~RMSE`),
-                     mean(results$values$`model_2~RMSE`),
-                     mean(results$values$`model_2b~RMSE`)
+                     mean(results$values$`model_2~RMSE`)
 ),
-nrow=3, ncol=1,
-dimnames = list(c("Model A", "Model B","Model B auto"),
+nrow=2, ncol=1,
+dimnames = list(c("Model A", "Model B"),
                 c(results$metrics[2]))
 )
 
 
 kable(x = result_2, format = "latex", digits = 3) %>%
   cat(.,file="/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/out/rf_models_rmse.tex")
+write.csv(result_2, paste0(output, "rf_models_compare.csv"), row.names = T)
 
 #########################################################################################
 #
@@ -281,6 +280,7 @@ rf_model_2_var_imp_df <-
   mutate(varname = gsub("f_room_type", "Room type:", varname) ) %>%
   arrange(desc(imp)) %>%
   mutate(imp_percentage = imp/sum(imp))
+write.csv(rf_model_2_var_imp_df, paste0(output, "rf_model_2_var_imp_df.csv"), row.names = F)
 
 
 ##############################
@@ -360,6 +360,7 @@ rf_model_2_var_imp_grouped <- group.importance(rf_model_2$finalModel, groups)
 rf_model_2_var_imp_grouped_df <- data.frame(varname = rownames(rf_model_2_var_imp_grouped),
                                             imp = rf_model_2_var_imp_grouped[,1])  %>%
   mutate(imp_percentage = imp/sum(imp))
+write.csv(rf_model_2_var_imp_grouped, paste0(output, "rf_model_2_var_imp_grouped_df.csv"), row.names = T)
 
 rf_model_2_var_imp_grouped_plot <-
   ggplot(rf_model_2_var_imp_grouped_df, aes(x=reorder(varname, imp), y=imp_percentage)) +
@@ -373,7 +374,7 @@ rf_model_2_var_imp_grouped_plot <-
   theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=10),
         axis.title.x = element_text(size=10), axis.title.y = element_text(size=10))
 rf_model_2_var_imp_grouped_plot
-#save_fig("rf_varimp_grouped1",output, "small")
+save_fig("rf_varimp_grouped1",output, "large")
 #save_fig("ch16-figure-2a-rf-varimp-group",output, "small")
 
 
@@ -399,7 +400,7 @@ pdp_n_acc_plot <- pdp_n_acc %>%
   scale_x_continuous(limit=c(1,7), breaks=seq(1,7,1))+
   theme_bg()
 pdp_n_acc_plot
-#save_fig("rf_pdp_n_accom", output, "small")
+save_fig("rf_pdp_n_accom", output, "large")
 #save_fig("ch16-figure-3a-rf-pdp-n-accom", output, "small")
 
 describe(data_holdout_w_prediction$n_accommodates)
@@ -427,7 +428,7 @@ pdp_n_borough_plot <- pdp_n_borough %>%
   #theme_bg() +
   theme(axis.text.x = element_text(angle = 90))
 pdp_n_borough_plot
-
+save_fig("rf_pdp_n_borough_plot", output, "large")
 # Subsample performance: RMSE / mean(y) ---------------------------------------
 # NOTE  we do this on the holdout set.
 
@@ -449,7 +450,7 @@ a <- data_holdout_w_prediction %>%
 a
 #TODO real boroughs
 b <- data_holdout_w_prediction %>%
-  #filter(f_neighbourhood_cleansed %in% c("Shinjuku Ku", "Toshima Ku", "Chuo Ku", "Ota Ku", "Sumida Ku", "Shibuya Ku", "Taito Ku", "Shinagawa Ku")) %>%
+  filter(f_neighbourhood_cleansed %in% c("Fuchu Shi", "Kokubunji Shi", "Hino Shi")) %>%
   group_by(f_neighbourhood_cleansed) %>%
   dplyr::summarise(
     rmse = RMSE(predicted_price, usd_price_day),
@@ -458,20 +459,19 @@ b <- data_holdout_w_prediction %>%
   )
 b
 c <- data_holdout_w_prediction %>%
-  filter(f_property_type %in% c("Apartment", "House")) %>%
-  group_by(f_property_type) %>%
+  group_by(f_room_type) %>%
   dplyr::summarise(
-    rmse = RMSE(predicted_price, price),
-    mean_price = mean(price),
+    rmse = RMSE(predicted_price, usd_price_day),
+    mean_price = mean(usd_price_day),
     rmse_norm = rmse / mean_price
   )
 
 
 d <- data_holdout_w_prediction %>%
   dplyr::summarise(
-    rmse = RMSE(predicted_price, price),
-    mean_price = mean(price),
-    rmse_norm = RMSE(predicted_price, price) / mean(price)
+    rmse = RMSE(predicted_price, usd_price_day),
+    mean_price = mean(usd_price_day),
+    rmse_norm = RMSE(predicted_price, usd_price_day) / mean(usd_price_day)
   )
 
 # Save output
@@ -481,11 +481,11 @@ colnames(c) <- c("", "RMSE", "Mean price", "RMSE/price")
 d<- cbind("All", d)
 colnames(d) <- c("", "RMSE", "Mean price", "RMSE/price")
 
-line1 <- c("Type", "", "", "")
-line2 <- c("Apartment size", "", "", "")
-line3 <- c("Borough", "", "", "")
+line1 <- c("Apartment size", "", "", "")
+line2 <- c("Borough", "", "", "")
+line3 <- c("Room type", "", "", "")
 
-result_3 <- rbind(line2, a, line1, c, line3, b, d) %>%
+result_3 <- rbind(line1, a, line3, c, line2, b, d) %>%
   transform(RMSE = as.numeric(RMSE), `Mean price` = as.numeric(`Mean price`),
             `RMSE/price` = as.numeric(`RMSE/price`))
 
@@ -493,10 +493,9 @@ options(knitr.kable.NA = '')
 kable(x = result_3, format = "latex", booktabs=TRUE, linesep = "",digits = c(0,2,1,2), col.names = c("","RMSE","Mean price","RMSE/price")) %>%
   cat(.,file= paste0(output, "performance_across_subsamples.tex"))
 options(knitr.kable.NA = NULL)
+write.csv(result_3, paste0(output,"normalized_rmse.csv"), row.names = F)
 
 ##########################################
-
-
 
 #########################################################################################
 #
@@ -513,7 +512,7 @@ options(knitr.kable.NA = NULL)
 set.seed(1234)
 system.time({
   ols_model <- train(
-    formula(paste0("price ~", paste0(predictors_2, collapse = " + "))),
+    formula(paste0("usd_price_day ~", paste0(predictors_2, collapse = " + "))),
     data = data_train,
     method = "lm",
     trControl = train_control
@@ -526,6 +525,7 @@ ols_model_coeffs_df <- data.frame(
   "ols_coefficient" = ols_model_coeffs
 ) %>%
   mutate(variable = gsub("`","",variable))
+write.csv(ols_model_coeffs_df, paste0(output,"ols_model_coeffs_df.csv"), row.names = F)
 
 # * LASSO
 # using extended model w interactions
@@ -533,7 +533,7 @@ ols_model_coeffs_df <- data.frame(
 set.seed(1234)
 system.time({
   lasso_model <- train(
-    formula(paste0("price ~", paste0(predictors_E, collapse = " + "))),
+    formula(paste0("usd_price_day ~", paste0(predictors_E, collapse = " + "))),
     data = data_train,
     method = "glmnet",
     preProcess = c("center", "scale"),
@@ -554,13 +554,13 @@ lasso_coeffs_non_null <- lasso_coeffs[!lasso_coeffs$lasso_coefficient == 0,]
 
 regression_coeffs <- merge(ols_model_coeffs_df, lasso_coeffs_non_null, by = "variable", all=TRUE)
 regression_coeffs %>%
-  write.csv(file = paste0(output, "regression_coeffs.csv"))
+  write.csv(file = paste0(output, "regression_coeffs.csv"), row.names = F)
 
 # CART
 set.seed(1234)
 system.time({
   cart_model <- train(
-    formula(paste0("price ~", paste0(predictors_2, collapse = " + "))),
+    formula(paste0("usd_price_day ~", paste0(predictors_2, collapse = " + "))),
     data = data_train,
     method = "rpart",
     tuneLength = 10,
@@ -569,7 +569,7 @@ system.time({
 })
 
 fancyRpartPlot(cart_model$finalModel, sub = "")
-
+save_fig(cart_tree,"cart_tree", output, "large")
 # GBM  -------------------------------------------------------
 gbm_grid <-  expand.grid(interaction.depth = c(1, 5, 10), # complexity of the tree
                          n.trees = (4:10)*50, # number of iterations, i.e. trees
@@ -580,7 +580,7 @@ gbm_grid <-  expand.grid(interaction.depth = c(1, 5, 10), # complexity of the tr
 
 set.seed(1234)
 system.time({
-  gbm_model <- train(formula(paste0("price ~", paste0(predictors_2, collapse = " + "))),
+  gbm_model <- train(formula(paste0("usd_price_day ~", paste0(predictors_2, collapse = " + "))),
                      data = data_train,
                      method = "gbm",
                      trControl = train_control,
@@ -601,23 +601,23 @@ gbm_model
 
 
 # the next will be in final model, loads of tuning
-gbm_grid2 <-  expand.grid(interaction.depth = c(1, 3, 5, 7, 9, 11), # complexity of the tree
-                          n.trees = (1:10)*50, # number of iterations, i.e. trees
-                          shrinkage = c(0.02, 0.05, 0.1, 0.15, 0.2), # learning rate: how quickly the algorithm adapts
-                          n.minobsinnode = c(5,10,20,30) # the minimum number of training set samples in a node to commence splitting
-)
+#gbm_grid2 <-  expand.grid(interaction.depth = c(1, 3, 5, 7, 9, 11), # complexity of the tree
+#                          n.trees = (1:10)*50, # number of iterations, i.e. trees
+#                          shrinkage = c(0.02, 0.05, 0.1, 0.15, 0.2), # learning rate: how quickly the algorithm adapts
+#                          n.minobsinnode = c(5,10,20,30) # the minimum number of training set samples in a node to commence splitting
+#)
+# !!!THIS model is tested, not giving a better result than RF, and takes hours to run!!!
 
-
-set.seed(1234)
-system.time({
-  gbm_model2 <- train(formula(paste0("price ~", paste0(predictors_2, collapse = " + "))),
-                      data = data_train,
-                      method = "gbm",
-                      trControl = train_control,
-                      verbose = FALSE,
-                      tuneGrid = gbm_grid2)
-})
-gbm_model2
+#set.seed(1234)
+#system.time({
+#  gbm_model2 <- train(formula(paste0("usd_price_day ~", paste0(predictors_2, collapse = " + "))),
+#                      data = data_train,
+#                      method = "gbm",
+#                      trControl = train_control,
+#                      verbose = FALSE,
+#                      tuneGrid = gbm_grid2)
+#})
+#gbm_model2
 
 
 # and get prediction rmse and add to next summary table
@@ -630,7 +630,6 @@ final_models <-
        "CART" = cart_model,
        "Random forest (smaller model)" = rf_model_1,
        "Random forest" = rf_model_2,
-       "Random forest (auto tuned)" = rf_model_2auto,
        "GBM (basic tuning)"  = gbm_model,
        "GBM (broad tuning)" = gbm_model2)
 
@@ -645,22 +644,24 @@ result_4 <- imap(final_models, ~{
 }) %>% unlist() %>% as.data.frame() %>%
   rename("CV RMSE" = ".")
 
-kable(x = result_4, format = "latex", digits = 3, booktabs=TRUE, linesep = "") %>%
-  cat(.,file= paste0(output,"horse_race_of_models_cv_rmse.tex"))
-
+kable(x = result_4, format = "html", digits = 3, booktabs=TRUE, linesep = "") %>%
+  cat(.,file= paste0(output,"horse_race_of_models_cv_rmse.html"))
+write.csv(result_4, paste0(output, "horse_race_of_models_cv_rmse.csv"), row.names = TRUE)
+          
 
 
 
 # evaluate preferred model on the holdout set -----------------------------
 
 result_5 <- map(final_models, ~{
-  RMSE(predict(.x, newdata = data_holdout), data_holdout[["price"]])
+  RMSE(predict(.x, newdata = data_holdout), data_holdout[["usd_price_day"]])
 }) %>% unlist() %>% as.data.frame() %>%
   rename("Holdout RMSE" = ".")
 
 kable(x = result_5, format = "latex", digits = 3, booktabs=TRUE, linesep = "") %>%
   cat(.,file= paste0(output,"horse_race_of_models_houldout_rmse.tex"))
-
+write.csv(result_5, paste0(output, "horse_race_of_models_houldout_rmse.csv"), row.names = TRUE)
 #ch16-table-1-rf-models-turning-choices
 #ch16-table-2-performance-across-subsamples
 #ch16-table-3-horse-race-of-models-cv-rmse
+
