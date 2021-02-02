@@ -1,3 +1,16 @@
+---
+title: "Assignment 1 - Data Analysis 3"
+author: "David Utassy"
+date: "02/02/2021"
+output: 
+  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r includes, include=FALSE, cache=TRUE}
 #########################################################################################
 # Prepared for David Utassy's DA3 assignment 1.
 #
@@ -131,8 +144,16 @@ tune_grid <- expand.grid(
   .splitrule = "variance",
   .min.node.size = c(5, 10)       #min num observations in the terminating nodes
 )
+```
 
+```{r price_dist_plot_create, include=FALSE, cache=TRUE}
+price_dist<- ggplot( data , aes( x = usd_price_day ) ) +
+    geom_histogram( aes(y = ..density..) , alpha = 1, binwidth = 5, color = 'black', fill = "#3a5e8cFF") +
+    geom_density( aes(y = ..density..) , alpha = .2 , bw = 5, color = 'black', fill="#FF6666") +
+    labs(x='Price (USD)',y='Density')
+```
 
+```{r rf_models, include=FALSE, cache=TRUE}
 # simpler model for model A (1)
 set.seed(1234)
 system.time({
@@ -184,10 +205,10 @@ write.csv(rf_model_2$results, paste0(output, "rf_model_2.csv"), row.names = F)
 #rf_model_2auto 
 #rf_model_2auto <-rf_model_2
 #write.csv(rf_model_2auto$results, paste0(output, "rf_model_2auto.csv"), row.names = F)
+```
 
 
-
-
+```{r rf_results, include=FALSE, cache=TRUE}
 # evaluate random forests -------------------------------------------------
 
 results <- resamples(
@@ -288,7 +309,7 @@ write.csv(rf_model_2_var_imp_df, paste0(output, "rf_model_2_var_imp_df.csv"), ro
 # to have a quick look
 plot(varImp(rf_model_2))
 #TODO continue
-source("/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/code/theme_bg.R")
+source("/Users/utassydv/Documents/workspaces/CEU/my_repos/data_analysis_prediction/airbnb_tokyo/theme_bg.R")
 cutoff = 600
 rf_model_2_var_imp_plot <- ggplot(rf_model_2_var_imp_df[rf_model_2_var_imp_df$imp>cutoff,],
                                   aes(x=reorder(varname, imp), y=imp_percentage)) +
@@ -396,12 +417,12 @@ pdp_n_acc_plot <- pdp_n_acc %>%
   ylab("Predicted price") +
   xlab("Accommodates (persons)") +
   scale_x_continuous(limit=c(1,7), breaks=seq(1,7,1))+
-  theme_bg()
+  theme_bg()+
+  theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=10),
+        axis.title.x = element_text(size=10), axis.title.y = element_text(size=10))
 pdp_n_acc_plot
 save_fig("rf_pdp_n_accom", output, "large")
 #save_fig("ch16-figure-3a-rf-pdp-n-accom", output, "small")
-
-describe(data_holdout_w_prediction$n_accommodates)
 
 
 pdp_n_roomtype <- pdp::partial(rf_model_2, pred.var = "f_room_type", pred.grid = distinct_(data_holdout, "f_room_type"), train = data_train)
@@ -423,8 +444,10 @@ pdp_n_borough_plot <- pdp_n_borough %>%
   ylab("Predicted price") +
   xlab("Borough") +
   scale_y_continuous(limits=c(60,120), breaks=seq(60,120, by=10)) +
-  #theme_bg() +
-  theme(axis.text.x = element_text(angle = 90))
+  theme_bg() +
+  theme(axis.text.x = element_text(angle = 90))+
+  theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=10),
+        axis.title.x = element_text(size=10), axis.title.y = element_text(size=10))
 pdp_n_borough_plot
 save_fig("rf_pdp_n_borough_plot", output, "large")
 # Subsample performance: RMSE / mean(y) ---------------------------------------
@@ -494,7 +517,9 @@ options(knitr.kable.NA = NULL)
 write.csv(result_3, paste0(output,"normalized_rmse.csv"), row.names = F)
 
 ##########################################
+```
 
+```{r horse_race, include=FALSE, cache=TRUE}
 #########################################################################################
 #
 # PART IV
@@ -565,9 +590,14 @@ system.time({
     trControl = train_control
   )
 })
+```
 
-fancyRpartPlot(cart_model$finalModel, sub = "")
-save_fig(cart_tree,"cart_tree", output, "large")
+```{r treeplot, include=FALSE, cache=TRUE}
+cart_tree <- fancyRpartPlot(cart_model$finalModel, sub = "")
+#save_fig(cart_tree,"cart_tree", output, "large")
+```
+
+```{r gbm_model, include=FALSE, cache=TRUE}
 # GBM  -------------------------------------------------------
 gbm_grid <-  expand.grid(interaction.depth = c(1, 5, 10), # complexity of the tree
                          n.trees = (4:10)*50, # number of iterations, i.e. trees
@@ -619,7 +649,9 @@ gbm_model
 
 
 # and get prediction rmse and add to next summary table
+```
 
+```{r end_res, include=FALSE, cache=TRUE}
 # ---- compare these models
 
 final_models <-
@@ -686,6 +718,166 @@ level_vs_pred <- ggplot(data = d) +
   scale_x_continuous(expand = c(0.01,0.01),limits=c(0, 350), breaks=seq(0, 350, by=50)) +
   scale_y_continuous(expand = c(0.01,0.01),limits=c(0, 350), breaks=seq(0, 350, by=50)) +
   labs(y = "Price (US dollars)", x = "Predicted price  (US dollars)") +
-  theme_bg() 
+  theme_bg() +
+  theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=10),
+        axis.title.x = element_text(size=10), axis.title.y = element_text(size=10))
 level_vs_pred
 save_fig("ch14-figure-8a-level-vs-pred", output, "small")
+
+```
+
+### [GitHub repository](https://github.com/utassydv/data_analysis_prediction/tree/main/airbnb_tokyo)
+
+# Introduction
+
+The purpose of this writing is to document the first assignment for the course Data Analysis 3 course. 
+The task was to help a company operating small and mid-sized apartments hosting 2-6 guests in Tokyo. The main goal of this project is to create a price prediction model that can be used by the company to predict the optimal price of their apartments. 
+
+The whole analysis was written in R, and the code is available under [this GitHub repository](https://github.com/utassydv/data_analysis_prediction/tree/main/airbnb_tokyo). We can separate the code into three parts. I prepared the data mainly in the "airbnb-prepare-tokyo.R" file, then the analysis and model building is done in the "airbnb-predict-tokyo.R" file, and the "airbnb-prepare-tokyo_documentation.Rmd" file is responsible for creating this document itself. 
+
+# Data
+
+The dataset scraped from Airbnb and it is taken from the following website: http://insideairbnb.com/get-the-data.html. The exact source of my data is [this file](http://data.insideairbnb.com/japan/kant%C5%8D/tokyo/2020-12-29/data/listings.csv.gz) which is scraped in December 2020. Furthermore, [here](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896) is a useful dictionary about the variables from the creator of the website. 
+
+### Data validity:
+
+As the data source is scraped from Airbnb, it means that it is kind of representative regarding apartments to rent in Tokyo, as we can state that Airbnb is big enough to provide us robust data. However, the effect of the current pandemic, and the fact, that it is planned that the Summer Olympics 2020(21) will take place in Tokyo we have several insecurities in the currently scraped data. 
+Especially because of the pandemic situation, our data represents an industry that is trying to survive, and we would like to make a prediction on how to price apartments. This might tell us, that we should use a dataset, that is from the times before the pandemic hit the world, and it might be true if we are aiming to price for a “back to normal” world, but that state may never return, therefore I am making the prediction for the current “new normal” with the latest data I can have. 
+
+As a left-hand-side variable, I choose the one night price of apartments. I would like to highlight here, that the $ sign in the provided data before each and every price, is misleading. According to the creator of http://insideairbnb.com,  and the above-linked dictionary table, all the prices are in local currency. In my case, it is Japanese Yen, however, in the favor of easier interpretation I converted it into USD. 
+
+For predictor variables, in the end, I have included other variables from the dataset in an automated way using ML models. However, to give a glimpse here are some of the most important variables from my final model: number of people that the place can accommodate (n_accomodates), days since the first review, number of beds, number of reviews, ratings, room type, borough, and several dummy variables from different amenities stated on Airbnb.
+
+### Data preparation
+
+The dataset that I downloaded from insideairbnb.com contains 11353 observations. According to the main goal of my final prediction model, first of all, I filtered for apartments with possible n_accomodates between 2 and 6. That resulted in a dataset of 6106 observations. Moreover, I was needed to make some basic data cleaning such as converting strings into numerical variables, creating dummy variables from the column called amenities, imputing some missing values, and deleting observations with important missing values such as price.
+
+Additionally, according to the histogram of price/night, and the later experience on models performing in prediction, I made the decision, to drop all observations with prices over 500 US Dollars. The originally filtered data had a very long right tail and at certain extreme price levels, there were significant (20-50) number of observations. First of all these observations were clearly not in the main pattern, additionally non of the models managed to handle those values resulting in a huge RMSE. From the points I mentioned above I assumed, that my data does not contain the reason for these extreme prices and I believe that I would need more domain knowledge to handle those observations. At the end of data preparation, I ended up with 5926 observations. In the following graph, the reader can observe the price distribution of apartments I used to train my models on. It is still right-skewed (as it should be) with some extreme values. 
+
+```{r price_dist_plot, fig.width=8,fig.height=4, fig.align='center', echo = FALSE , results = 'asis', warning = FALSE, message = FALSE}
+price_dist
+```
+
+# Model building
+
+To get a great prediction model, I have created 5 different types of models. My goal was to experiment with ML models such as Random Forest and Gradient Boosting Machines but as a benchmark, I created models like OLS, LASSO, and CART. 
+In order to compare the models, I divided the data into a training (4900) and a holdout (1026) data-set. Additionally, it is important to mention that I used 5 fold cross-validation in each training of the model on the training dataset. 
+
+### OLS:
+
+I believe that it is not the best possible OLS model for this prediction. To get a better model I should have done more exploratory data analysis, searching for associations between y and each x variables. However, in order to avoid spending a significant amount of time on creating a better OLS model, I created a simple and robust one, the have a great benchmark for my other models.
+
+I have used the following variables:
+basic:
+
+- n_accomodates (possible number of people in the apartment)
+- n_beds (number of beds
+- n_days_since (number of days since the first review)
+- f_neighbbourhood_cleansed (dummy variables on boroughs)
+- f_room_type (categorical variable entire apartment or private/shared room)
+
+review related:
+
+- f_number_of_reviews (number of reviews on the apartment)
+- flag_n_number_of_reviews (whether the variable is imputed or not)
+- n_review_scores_rating (rating scores)
+- flag_review_scores_rating (whether the variable is imputed or not)
+
+I will share the goodness of this model later in the model selection part.
+
+### LASSO:
+
+With to OLS, the complicated part is to choose which variables should be included in the model and how should we include them, therefore it worth using LASSO. LASSO selects some of the candidate x variables to remain in the regression in an automated way. I just had to provide it a set of variables. Additionally to the ones that I used in the OLS, I provided the dummy variables created from the amenities column and added some interaction terms as well. 
+
+I will share the goodness of this model later in the model selection part.
+
+### CART
+
+To start with the less important, I would like to mention that I ran a CART model with a complexity parameter of 10. We do not expect a good result from this method, but I will introduce its results in the model selection part.
+
+### Random Forest
+
+One of the most promising model was Random Forest. I ran two different models, a simpler and a more complex one regarding the variables provided to them. I used the caret library to train these models and used a tuning grid with each of them to find better tuning parameters. 
+For the simpler model, I provided 9 and for the more complex one, I provided 54 variables. In the tuning grid, I used numbers according to the rule of thumb (square root of variables) on the number of possible variables in each split. Also, I used 5, 10, 15 as a minimum nodes parameter. 
+
+### Gradient Boosting Machines
+
+The other promising model is the GBM. I ran a model with some basic setup provided with the same data as the more complex RF model. I believe that this model has some more performance in it with more clever tuning, but I would like to share its result anyway in the model selection to compare it to other models. 
+
+# Model selection
+
+For the model selection, it is important to define a loss-function. I assumed the loss function is symmetric and slightly convex meaning, that errors on both sides of our prediction have the same weight, and we are penalizing greater errors more than smaller ones. However, this is a business-related question, so we should cooperate with the company. Because of the above-mentioned points, I have chosen RMSE as a loss-function.
+
+In the table below, we can see the overall prediction performance of each model. Note that these models were trained on the training dataset using 5 fold cross-validation and then evaluated on the holdout dataset. 
+ 
+```{r holdout_rmse_table, echo = FALSE , results = "asis", warning = FALSE, message = FALSE }
+library(kableExtra)
+result_5 <- cbind(Model = rownames(result_5), result_5)
+rownames(result_5) <- 1:nrow(result_5)
+kbl(result_5, digits = 2)  %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+
+We can see, that the overall winner is to more complex Random Forest model, and it’s RMSE is significantly better than the other models. However, we can observe, that the GBM is right on the top without any effort put into it, therefore it might worth in the future to try to tune it better. 
+
+As my goal is prediction, I will go on with the best performing model, however, if our client needs interpretation as well, then we can use the model provided by lasso to get a glimpse of the trends. 
+Evaluation of the best model (Random Forest)
+
+We have chosen the random forest model according to the RMSE on the holdout dataset, but we can compare the models on the cross-validated averaged RMSE also (see below). It turns out, that the order is the same as before.
+TABLE
+
+Furthermore, it is possible to evaluate our final model according to its cross-validated RMSE results (table below). We can see that it has some problems with its robustness as the variance of RMSE is there, but the values are still under the RMSE of other models. 
+
+```{r cv_rmse_table, echo = FALSE , results = "asis", warning = FALSE, message = FALSE }
+library(kableExtra)
+result_4 <- cbind(Model = rownames(result_4), result_4)
+rownames(result_4) <- 1:nrow(result_4)
+kbl(result_4, digits = 2) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+
+In the best RF model the best tuning parameters turned out to be the following (with 54 variables):
+
+- number of vars. at each split = 9
+- minimum nodes parameter = 5
+
+# Model diagnostics on the Random Forest Model
+
+### Variable importance
+
+However we can not interpret Random Forest models like OLS, we still have some tools that can explain some details on our “back box” like model. The first one is the variable importance plot that the reader can observe below. The main takeaway from this plot, that the most important variable in our model is the borough in which the apartment is located, after comes the possible number of people, and beds, then some review related variables are important as well.
+
+```{r varimp_plot, fig.width=8,fig.height=4, fig.align='center', echo = FALSE , results = 'asis', warning = FALSE, message = FALSE}
+rf_model_2_var_imp_grouped_plot
+```
+
+### Partial dependence
+
+Secondly, it worth showing some partial dependence plots, which show how each variable are related to the price. On the first plot, we can observe the number of accommodations, where there is clear tendency. After that, we have a similar plot regarding boroughs.
+
+```{r pdp_n_acc_plot, fig.width=8,fig.height=4, fig.align='center', echo = FALSE , results = 'asis', warning = FALSE, message = FALSE}
+pdp_n_acc_plot
+```
+
+```{r pdp_n_borough_plot, fig.width=8,fig.height=4,  fig.align='center', echo = FALSE , results = 'asis', warning = FALSE, message = FALSE}
+pdp_n_borough_plot
+```
+
+### Heterogeneity
+
+```{r geterogeneity_table, echo = FALSE , results = "asis", warning = FALSE, message = FALSE }
+kbl(result_4, digits = 2) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+
+
+In the table below I collected some outstandingly bad categories regarding the robustness check of my model. The most important column is the last one with the normalized RMSE. It can be seen, that in some boroughs the norm. RMSE is pretty high meaning that my model is not accurate there. It means, that we should expect greater prediction errors in these areas, and if possible we should try to improve there.  
+
+
+### Prediction
+
+As a final evaluation of the best model let’s see how the model predicts on the holdout dataset. Below it can be seen, that the model mostly overpredict apartments with prices under 100 USD, and the error is getting larger with higher prices. 
+
+```{r pred_plot, fig.width=4,fig.height=4, fig.align='center', echo = FALSE , results = 'asis', warning = FALSE, message = FALSE}
+level_vs_pred
+```
+
+# Summary:
+To conclude I would like the mention, that out of the 5 tested models a Random Forest model turned out to be the best for prediction, however, it is clear that the model has some limitations from the evaluation. To further improve the result, we can provide some more variables according to domain knowledge for example according to the location we can include the distance from the city center or from other frequented places. Compared to the case study using dataset from London, my model on Tokyo is definitely less robust, as it has less observation, but the performance of different kind of models are similar on both datasets. Moreover, it would definitely make the prediction easier if we would have more data that is less affected by the pandemic and a possible Olympic games in the city, but that is Tokyo today. 

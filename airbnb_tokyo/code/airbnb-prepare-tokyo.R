@@ -178,7 +178,7 @@ summary(data$usd_price_day)
 data <- data %>%
   mutate(ln_usd_price_day = log(usd_price_day))
 data <- data %>%
-  filter(usd_price_day <500)
+  filter(usd_price_day <475)
 
 
 # Squares and further values to create
@@ -284,4 +284,5 @@ write_csv(data, data_out)
 
 str(data)
 
-
+ggplot(data, aes(x=usd_price_day)) +
+  geom_histogram(binwidth = 5)

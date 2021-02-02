@@ -1,7 +1,7 @@
 "","Holdout RMSE"
-"OLS",57.1284497505677
-"LASSO (model w/ interactions)",52.5357580029079
-"CART",50.9002827865278
-"Random forest (smaller model)",53.2469744563177
-"Random forest",41.3427466304285
-"GBM (basic tuning)",45.5871680109177
+"OLS",43.5154832964576
+"LASSO (model w/ interactions)",43.2871468727197
+"CART",45.0950082094432
+"Random forest (smaller model)",41.7252049332402
+"Random forest",35.4535312435177
+"GBM (basic tuning)",38.5530702519121

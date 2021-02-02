@@ -1,162 +1,165 @@
 "variable","ols_coefficient","lasso_coefficient"
-"(Intercept)",-42.7474480243327,88.5568376699822
-"d_airconditioning",6.66979567094748,0.277762262425094
-"d_bathtub",5.90174844115259,0.66833249830034
-"d_bedlinens",-5.28610886193702,-1.23832019433123
-"d_bodysoap",-6.42338651823099,-3.02309434507247
-"d_carbonmonoxidealarm",-10.5708871211167,-3.95996055978458
-"d_coffeemaker",7.12694704536656,1.32026311760462
-"d_conditioner",-11.1196732472003,-0.373098163139871
-"d_cookingbasics",4.80598139040326,1.40377138461346
-"d_dedicatedworkspace",1.80500983618369,0.0910303438978924
-"d_dishesandsilverware",4.98135139588579,2.0936047860637
-"d_dryer",2.12195268863765,1.19923443804249
-"d_elevator",5.03233698341116,0.341539157648463
-"d_essentials",5.80477934298766,0.764593556896775
-"d_ethernetconnection",7.76249422704754,2.01403540849887
-"d_extrapillowsandblankets",6.35651178230138,1.20588267271479
-"d_fireextingr",-5.03368664304123,-1.31277831278143
-"d_firstaidkit",-1.82485794249154,NA
-"d_hairdryer",-1.5555786932784,-0.0113009342432786
-"d_hangers",1.66465307488242,1.24496761872548
-"d_heating",2.2491924051438,NA
-"d_hotthampoo",-23.9050605239194,-4.42697155741766
-"d_hotwater",-8.20576115685953,-1.93488124998481
-"d_iron",0.186389193142954,NA
-"d_keypad",2.13601817398603,0.827177608607655
-"d_kitchen",-1.73446018800833,0.113213144784904
-"d_ledropoffallowed",0.0631787674149214,NA
-"d_lockbox",-11.9580423012653,-4.49692367992912
-"d_lockonbedroomdoor",8.48790331057953,NA
-"d_longtermstaysallowed",1.06866305238248,0.11478255993748
-"d_microwave",6.79256817108738,2.0885438693653
-"d_oven",3.3539360675309,1.36222768421431
-"d_paidparkingoffpremises",-1.16586383650372,NA
-"d_patioorbalcony",-0.134778355610408,NA
-"d_privateentrance",7.02909883717273,2.85277069828283
-"d_refrigerator",-13.3794555191899,-4.75694912957737
-"d_roomdarkeningshades",-7.29703857353997,-2.5420511325956
-"d_shampoo",-17.4410105423619,-4.22968261033413
-"d_showergel",9.15525720179652,3.54128247316391
-"d_singlelevelhome",-4.36155151152094,-0.581799830793033
-"d_smartlock",2.01361197907481,NA
-"d_smokealarm",8.02922381195629,0.566923863125911
-"d_stove_gas_or_elect",1.19773257951242,NA
-"d_tv",2.20292277270702,0.985207933099644
-"d_washer",-2.78157914239353,0.285888643391421
-"d_wifi",1.11201332875351,NA
-"f_neighbourhood_cleansedAkiruno Shi",-1.34367002135351,-0.582443252994241
-"f_neighbourhood_cleansedAkishima Shi",8.37222116705266,NA
-"f_neighbourhood_cleansedArakawa Ku",18.3521426058343,0.0891632133369695
-"f_neighbourhood_cleansedArakawa Ku:f_room_typePrivate room",NA,-0.596559252450371
-"f_neighbourhood_cleansedBunkyo Ku",43.3502907559865,0.712691305373083
-"f_neighbourhood_cleansedBunkyo Ku:d_elevator",NA,-0.216080190772734
-"f_neighbourhood_cleansedChiyoda Ku",87.2151194165472,7.60048632119681
-"f_neighbourhood_cleansedChiyoda Ku:d_elevator",NA,-0.874044673960006
+"(Intercept)",-61.8296603410795,86.396659591837
+"d_airconditioning",NA,0.262073301382523
+"d_bathtub",NA,0.911327570792057
+"d_bedlinens",NA,-1.41285439766602
+"d_bodysoap",NA,-1.9840463368034
+"d_carbonmonoxidealarm",NA,-3.53184236368627
+"d_coffeemaker",NA,2.65008468128596
+"d_conditioner",NA,-1.62130640001106
+"d_cookingbasics",NA,1.71573290727083
+"d_dishesandsilverware",NA,1.61252420956489
+"d_dryer",NA,0.557346003148715
+"d_elevator",NA,0.147441847552781
+"d_essentials",NA,0.713249047871357
+"d_ethernetconnection",NA,2.72600017860668
+"d_extrapillowsandblankets",NA,1.56996931508757
+"d_fireextingr",NA,-2.63201176008792
+"d_hairdryer",NA,-0.741033753176349
+"d_hangers",NA,2.23196066773069
+"d_heating",NA,-0.107173100196242
+"d_hotthampoo",NA,-4.7619346143498
+"d_hotwater",NA,-1.86955664286447
+"d_kitchen",NA,0.832312849944651
+"d_lockbox",NA,-5.61342839824538
+"d_lockonbedroomdoor",NA,-1.32498861992267
+"d_longtermstaysallowed",NA,0.45133075704001
+"d_microwave",NA,1.41559776890346
+"d_oven",NA,1.38097982247457
+"d_paidparkingoffpremises",NA,-0.567982270802693
+"d_privateentrance",NA,3.28977701158629
+"d_refrigerator",NA,-3.57713578205473
+"d_roomdarkeningshades",NA,-3.102608675544
+"d_shampoo",NA,-4.30718916842368
+"d_showergel",NA,3.44344703570802
+"d_singlelevelhome",NA,-0.494788520198433
+"d_smartlock",NA,0.0727509666995114
+"d_smokealarm",NA,0.526944290963169
+"d_tv",NA,1.8722210317354
+"d_washer",NA,0.784740784399761
+"d_wifi",NA,-0.277508027874371
+"f_neighbourhood_cleansedAkiruno Shi",-6.65291425558636,-0.706401627348591
+"f_neighbourhood_cleansedAkishima Shi",-4.84436411609095,-0.00309104014580792
+"f_neighbourhood_cleansedArakawa Ku",12.2935069276137,0.810473587235336
+"f_neighbourhood_cleansedArakawa Ku:f_room_typePrivate room",NA,-0.995086414708651
+"f_neighbourhood_cleansedBunkyo Ku",31.6446720614472,1.41179166013599
+"f_neighbourhood_cleansedBunkyo Ku:d_elevator",NA,-0.426642268035765
+"f_neighbourhood_cleansedChiyoda Ku",80.8331595322502,10.0879343578708
+"f_neighbourhood_cleansedChiyoda Ku:d_elevator",NA,-0.790407895224698
+"f_neighbourhood_cleansedChiyoda Ku:f_room_typePrivate room",NA,-0.00364546470237496
 "f_neighbourhood_cleansedChofu Shi",NA,NA
-"f_neighbourhood_cleansedChuo Ku",21.8220296804478,-5.3194420317948
-"f_neighbourhood_cleansedChuo Ku:d_elevator",NA,0.0869971029970094
-"f_neighbourhood_cleansedEdogawa Ku",3.55154515758885,NA
-"f_neighbourhood_cleansedEdogawa Ku:d_elevator",NA,0.100852076983189
-"f_neighbourhood_cleansedEdogawa Ku:f_room_typePrivate room",NA,-0.224132828759443
+"f_neighbourhood_cleansedChuo Ku",20.6035405914696,-6.77231720990725
+"f_neighbourhood_cleansedChuo Ku:d_elevator",NA,0.353421461565589
+"f_neighbourhood_cleansedChuo Ku:f_room_typePrivate room",NA,0.0318945671946328
+"f_neighbourhood_cleansedEdogawa Ku",-3.96024085990518,NA
+"f_neighbourhood_cleansedEdogawa Ku:d_elevator",NA,0.0402463715326232
+"f_neighbourhood_cleansedEdogawa Ku:f_room_typePrivate room",NA,-0.254134950745326
 "f_neighbourhood_cleansedFuchu Shi",NA,NA
-"f_neighbourhood_cleansedFussa Shi",-53.9211059177563,-0.416775846296507
-"f_neighbourhood_cleansedFussa Shi:f_room_typePrivate room",NA,-0.00198572904392662
-"f_neighbourhood_cleansedHamura Shi",79.6663472179531,NA
-"f_neighbourhood_cleansedHigashimurayama Shi",2.74152759831394,NA
-"f_neighbourhood_cleansedHino Shi",-22.3008236689385,-1.73253469048631
-"f_neighbourhood_cleansedItabashi Ku",17.8293412338734,-0.205882409497114
-"f_neighbourhood_cleansedItabashi Ku:d_elevator",NA,-0.365912240769252
-"f_neighbourhood_cleansedKatsushika Ku",6.61450705926138,NA
-"f_neighbourhood_cleansedKatsushika Ku:d_elevator",NA,1.7074179329399
-"f_neighbourhood_cleansedKita Ku",-3.08558818137247,NA
-"f_neighbourhood_cleansedKita Ku:f_room_typePrivate room",NA,0.170069952088521
-"f_neighbourhood_cleansedKodaira Shi",12.5955273777615,-0.168174655102665
-"f_neighbourhood_cleansedKoganei Shi",-56.2097366857797,-0.766647806110774
-"f_neighbourhood_cleansedKokubunji Shi",51.1038260292302,0.415499474131306
-"f_neighbourhood_cleansedKomae Shi",151.256642787363,1.60258273690843
-"f_neighbourhood_cleansedKoto Ku",2.32464451427138,-0.235264564871527
-"f_neighbourhood_cleansedKoto Ku:d_elevator",NA,-0.447388400280791
-"f_neighbourhood_cleansedKoto Ku:f_room_typePrivate room",NA,-0.32036020156201
-"f_neighbourhood_cleansedKunitachi Shi",8.43842970763822,NA
-"f_neighbourhood_cleansedKunitachi Shi:f_room_typePrivate room",NA,-0.513843020133003
-"f_neighbourhood_cleansedMachida Shi",-13.682295561004,-0.267090863088082
-"f_neighbourhood_cleansedMeguro Ku",65.2883280739587,NA
-"f_neighbourhood_cleansedMinato Ku",83.6194272702877,13.5332025895667
-"f_neighbourhood_cleansedMinato Ku:d_elevator",NA,-8.06401646374215
-"f_neighbourhood_cleansedMinato Ku:f_room_typePrivate room",NA,12.4040250852861
-"f_neighbourhood_cleansedMitaka Shi",50.8640828178074,NA
-"f_neighbourhood_cleansedMitaka Shi:d_elevator",NA,2.30717193679088
-"f_neighbourhood_cleansedMitaka Shi:f_room_typePrivate room",NA,-0.0810486612151526
-"f_neighbourhood_cleansedMusashino Shi",63.7697372352122,0.473053318440445
-"f_neighbourhood_cleansedMusashino Shi:d_elevator",NA,0.976048579287598
-"f_neighbourhood_cleansedNakano Ku",32.5277364728967,-2.01290883387447
-"f_neighbourhood_cleansedNakano Ku:d_elevator",NA,-1.20207152492501
-"f_neighbourhood_cleansedNakano Ku:f_room_typePrivate room",NA,6.37462865799323
-"f_neighbourhood_cleansedNerima Ku",12.8257201461307,-0.0569753289920722
-"f_neighbourhood_cleansedNerima Ku:f_room_typePrivate room",NA,-0.228414879085916
-"f_neighbourhood_cleansedNishitokyo Shi",47.5315742313319,2.29467734799626
-"f_neighbourhood_cleansedNishitokyo Shi:f_room_typePrivate room",NA,-0.590557181655019
-"f_neighbourhood_cleansedOme Shi",-86.9215992212281,NA
-"f_neighbourhood_cleansedOta Ku",25.2308186136025,-5.96892212486767
-"f_neighbourhood_cleansedOta Ku:d_elevator",NA,2.71841092583872
-"f_neighbourhood_cleansedOta Ku:f_room_typePrivate room",NA,-0.365834670687867
-"f_neighbourhood_cleansedSetagaya Ku",28.6819067662076,NA
-"f_neighbourhood_cleansedSetagaya Ku:d_elevator",NA,2.03954836561985
-"f_neighbourhood_cleansedSetagaya Ku:f_room_typePrivate room",NA,1.41547411461258
-"f_neighbourhood_cleansedSetagaya Ku:f_room_typeShared room",NA,-0.751911571249254
-"f_neighbourhood_cleansedShibuya Ku",58.1768401817466,3.09124496142011
-"f_neighbourhood_cleansedShibuya Ku:d_elevator",NA,3.01076865037903
-"f_neighbourhood_cleansedShibuya Ku:f_room_typePrivate room",NA,-0.711156574836068
-"f_neighbourhood_cleansedShinagawa Ku",34.6756995059648,0.276998571552719
-"f_neighbourhood_cleansedShinagawa Ku:d_elevator",NA,2.2003188679276
-"f_neighbourhood_cleansedShinjuku Ku",36.9531565428896,NA
-"f_neighbourhood_cleansedShinjuku Ku:f_room_typePrivate room",NA,1.16348656818605
-"f_neighbourhood_cleansedSuginami Ku",18.2533919230098,NA
-"f_neighbourhood_cleansedSuginami Ku:d_elevator",NA,-0.573586440123141
-"f_neighbourhood_cleansedSuginami Ku:f_room_typePrivate room",NA,0.279678171672164
-"f_neighbourhood_cleansedSumida Ku",17.0052263053151,-2.18196613405397
-"f_neighbourhood_cleansedSumida Ku:d_elevator",NA,2.74554361448735
-"f_neighbourhood_cleansedSumida Ku:f_room_typePrivate room",NA,0.0424440370233057
-"f_neighbourhood_cleansedSumida Ku:f_room_typeShared room",NA,0.78364332779192
-"f_neighbourhood_cleansedTachikawa Shi",116.987350711512,1.72608411788588
-"f_neighbourhood_cleansedTaito Ku",32.8155027142399,0.779141567702937
-"f_neighbourhood_cleansedTaito Ku:d_elevator",NA,2.38213440659185
-"f_neighbourhood_cleansedTaito Ku:f_room_typePrivate room",NA,0.80752840668825
-"f_neighbourhood_cleansedTama Shi",-19.4097788852608,-0.609572283284038
-"f_neighbourhood_cleansedToshima Ku",29.299080372091,1.47753647249686
-"f_neighbourhood_cleansedToshima Ku:d_elevator",NA,1.93159588324893
-"f_neighbourhood_cleansedToshima Ku:f_room_typePrivate room",NA,-1.24692641455674
-"f_room_typePrivate room",0.787858904984028,-1.99292256020199
-"f_room_typeShared room",-4.68255799415178,NA
-"flag_n_number_of_reviews",-35.6135383693865,NA
-"flag_review_scores_rating",43.2137993095015,2.39717737103858
-"n_accommodates",13.8024267113278,17.1697942976316
-"n_accommodates:f_neighbourhood_cleansedArakawa Ku",NA,-0.690452951052857
-"n_accommodates:f_neighbourhood_cleansedBunkyo Ku",NA,1.42731478476675
-"n_accommodates:f_neighbourhood_cleansedChuo Ku",NA,6.21862306136224
-"n_accommodates:f_neighbourhood_cleansedEdogawa Ku",NA,-2.26629752818505
-"n_accommodates:f_neighbourhood_cleansedFussa Shi",NA,-0.572573049650507
-"n_accommodates:f_neighbourhood_cleansedHamura Shi",NA,1.66943822200213
-"n_accommodates:f_neighbourhood_cleansedHigashimurayama Shi",NA,-0.392510555838775
-"n_accommodates:f_neighbourhood_cleansedKatsushika Ku",NA,-2.40191332955694
-"n_accommodates:f_neighbourhood_cleansedKita Ku",NA,-4.19580682959504
-"n_accommodates:f_neighbourhood_cleansedKoganei Shi",NA,-0.0124453027342593
-"n_accommodates:f_neighbourhood_cleansedKomae Shi",NA,0.000339418723006441
-"n_accommodates:f_neighbourhood_cleansedKoto Ku",NA,-1.2963505880866
-"n_accommodates:f_neighbourhood_cleansedMachida Shi",NA,-0.000500655409083228
-"n_accommodates:f_neighbourhood_cleansedMeguro Ku",NA,3.29287583038584
-"n_accommodates:f_neighbourhood_cleansedMinato Ku",NA,0.779960103318705
-"n_accommodates:f_neighbourhood_cleansedNakano Ku",NA,3.79637175017292
-"n_accommodates:f_neighbourhood_cleansedNishitokyo Shi",NA,-1.59520732549554
-"n_accommodates:f_neighbourhood_cleansedOme Shi",NA,-1.87986761667213
-"n_accommodates:f_neighbourhood_cleansedOta Ku",NA,5.74563539809427
-"n_accommodates:f_neighbourhood_cleansedSetagaya Ku",NA,0.0681829324002172
-"n_accommodates:f_neighbourhood_cleansedShibuya Ku",NA,4.94451765403167
-"n_accommodates:f_neighbourhood_cleansedShinjuku Ku",NA,6.37249125500353
-"n_accommodates:f_neighbourhood_cleansedSumida Ku",NA,-1.05843209664064
-"n_accommodates:f_neighbourhood_cleansedTaito Ku",NA,0.868295938554822
-"n_beds",5.17263182645847,5.05892872762493
-"n_days_since",0.0221398008438449,7.6537182304721
-"n_number_of_reviews",-0.149793140174031,-4.37066061804727
-"n_review_scores_rating",0.412447091444413,2.67007316585832
+"f_neighbourhood_cleansedFussa Shi",-26.061140803778,-0.45485259438704
+"f_neighbourhood_cleansedFussa Shi:f_room_typePrivate room",NA,-0.00269155574364619
+"f_neighbourhood_cleansedHamura Shi",68.2100087202092,NA
+"f_neighbourhood_cleansedHigashimurayama Shi",-3.1937491567378,NA
+"f_neighbourhood_cleansedHino Shi",-29.6064531095527,-1.79397396506942
+"f_neighbourhood_cleansedHino Shi:f_room_typePrivate room",NA,-0.0853366241578483
+"f_neighbourhood_cleansedItabashi Ku",11.3174920514658,NA
+"f_neighbourhood_cleansedItabashi Ku:d_elevator",NA,-0.29685382947512
+"f_neighbourhood_cleansedItabashi Ku:f_room_typePrivate room",NA,0.0683626701852185
+"f_neighbourhood_cleansedKatsushika Ku",1.02219924361545,0.00761875115926066
+"f_neighbourhood_cleansedKatsushika Ku:d_elevator",NA,1.65937732188704
+"f_neighbourhood_cleansedKita Ku",-14.1055046105768,NA
+"f_neighbourhood_cleansedKita Ku:d_elevator",NA,-0.00275596436592197
+"f_neighbourhood_cleansedKita Ku:f_room_typePrivate room",NA,0.226919545845852
+"f_neighbourhood_cleansedKita Ku:f_room_typeShared room",NA,-0.0428646232893731
+"f_neighbourhood_cleansedKodaira Shi",-15.3509595665252,-0.421823195720839
+"f_neighbourhood_cleansedKoganei Shi",-46.9670244502484,-0.746216096138563
+"f_neighbourhood_cleansedKokubunji Shi",34.9628975106161,0.42799245698371
+"f_neighbourhood_cleansedKomae Shi",141.981752572915,1.65105691978847
+"f_neighbourhood_cleansedKoto Ku",-2.93936264181774,-0.313792974660944
+"f_neighbourhood_cleansedKoto Ku:d_elevator",NA,-0.233368483452729
+"f_neighbourhood_cleansedKoto Ku:f_room_typePrivate room",NA,-0.0667747427456236
+"f_neighbourhood_cleansedKunitachi Shi",-4.19435259581464,NA
+"f_neighbourhood_cleansedKunitachi Shi:f_room_typePrivate room",NA,-0.491596161597754
+"f_neighbourhood_cleansedMachida Shi",-30.4959167357297,-0.334133082542246
+"f_neighbourhood_cleansedMeguro Ku",61.6610240297986,NA
+"f_neighbourhood_cleansedMinato Ku",52.8639604959873,4.36528858401356
+"f_neighbourhood_cleansedMinato Ku:d_elevator",NA,-0.322754324711124
+"f_neighbourhood_cleansedMitaka Shi",42.9406709611729,NA
+"f_neighbourhood_cleansedMitaka Shi:d_elevator",NA,2.3351408077265
+"f_neighbourhood_cleansedMitaka Shi:f_room_typePrivate room",NA,-0.0801322288486094
+"f_neighbourhood_cleansedMusashino Shi",59.8250814609107,0.498510074887205
+"f_neighbourhood_cleansedMusashino Shi:d_elevator",NA,0.953709822122828
+"f_neighbourhood_cleansedNakano Ku",19.6315468539362,-3.11375401149805
+"f_neighbourhood_cleansedNakano Ku:d_elevator",NA,-1.22604837071732
+"f_neighbourhood_cleansedNakano Ku:f_room_typePrivate room",NA,-0.483051961891498
+"f_neighbourhood_cleansedNerima Ku",14.3865117774013,NA
+"f_neighbourhood_cleansedNerima Ku:f_room_typePrivate room",NA,-0.329301191565224
+"f_neighbourhood_cleansedNishitokyo Shi",55.1029517286494,2.52733672320278
+"f_neighbourhood_cleansedNishitokyo Shi:f_room_typePrivate room",NA,-0.714884661952819
+"f_neighbourhood_cleansedOme Shi",-87.6467914020404,NA
+"f_neighbourhood_cleansedOta Ku",20.8480167512146,-7.18772383863791
+"f_neighbourhood_cleansedOta Ku:d_elevator",NA,3.47680718436235
+"f_neighbourhood_cleansedOta Ku:f_room_typePrivate room",NA,-0.344742195852563
+"f_neighbourhood_cleansedSetagaya Ku",19.1034933904801,-0.000765519870192459
+"f_neighbourhood_cleansedSetagaya Ku:d_elevator",NA,1.99421259538748
+"f_neighbourhood_cleansedSetagaya Ku:f_room_typePrivate room",NA,1.18679282285252
+"f_neighbourhood_cleansedSetagaya Ku:f_room_typeShared room",NA,-0.929151504407395
+"f_neighbourhood_cleansedShibuya Ku",52.4546642642401,3.31302553712364
+"f_neighbourhood_cleansedShibuya Ku:d_elevator",NA,3.13113509021632
+"f_neighbourhood_cleansedShibuya Ku:f_room_typePrivate room",NA,-0.365394796782958
+"f_neighbourhood_cleansedShinagawa Ku",30.0592192945392,0.275603882862858
+"f_neighbourhood_cleansedShinagawa Ku:d_elevator",NA,2.4531409209073
+"f_neighbourhood_cleansedShinagawa Ku:f_room_typePrivate room",NA,-0.407360643293868
+"f_neighbourhood_cleansedShinjuku Ku",28.8019936239264,NA
+"f_neighbourhood_cleansedShinjuku Ku:f_room_typePrivate room",NA,0.155960784564332
+"f_neighbourhood_cleansedSuginami Ku",15.8311812183199,NA
+"f_neighbourhood_cleansedSuginami Ku:d_elevator",NA,-0.578656667869602
+"f_neighbourhood_cleansedSuginami Ku:f_room_typePrivate room",NA,1.06988381272735
+"f_neighbourhood_cleansedSumida Ku",7.45903307111833,-2.99899357584602
+"f_neighbourhood_cleansedSumida Ku:d_elevator",NA,2.91124127827515
+"f_neighbourhood_cleansedSumida Ku:f_room_typePrivate room",NA,0.511531416217283
+"f_neighbourhood_cleansedSumida Ku:f_room_typeShared room",NA,0.910243322245236
+"f_neighbourhood_cleansedTachikawa Shi",108.800863847908,1.7299276513363
+"f_neighbourhood_cleansedTaito Ku",25.3286459374694,0.122546108265081
+"f_neighbourhood_cleansedTaito Ku:d_elevator",NA,2.18255429952297
+"f_neighbourhood_cleansedTaito Ku:f_room_typePrivate room",NA,1.19186737238436
+"f_neighbourhood_cleansedTama Shi",-21.069534619723,-0.679829942776625
+"f_neighbourhood_cleansedToshima Ku",21.4732906878096,1.15034827781004
+"f_neighbourhood_cleansedToshima Ku:d_elevator",NA,2.27222265694251
+"f_neighbourhood_cleansedToshima Ku:f_room_typePrivate room",NA,-1.94982810084187
+"f_room_typePrivate room",-5.54557848670402,-1.21267778910078
+"f_room_typeShared room",-6.02021952250145,NA
+"flag_n_number_of_reviews",-32.1462444055152,NA
+"flag_review_scores_rating",36.0062414517338,2.09856681821063
+"n_accommodates",14.6264795962688,16.1448312005389
+"n_accommodates:f_neighbourhood_cleansedAkishima Shi",NA,-1.58918174520751e-05
+"n_accommodates:f_neighbourhood_cleansedArakawa Ku",NA,-1.18625634971249
+"n_accommodates:f_neighbourhood_cleansedBunkyo Ku",NA,0.603739226590074
+"n_accommodates:f_neighbourhood_cleansedChiyoda Ku",NA,-2.6308455988908
+"n_accommodates:f_neighbourhood_cleansedChuo Ku",NA,7.82827386772026
+"n_accommodates:f_neighbourhood_cleansedEdogawa Ku",NA,-2.27665028554235
+"n_accommodates:f_neighbourhood_cleansedFussa Shi",NA,-0.760563210927341
+"n_accommodates:f_neighbourhood_cleansedHamura Shi",NA,1.63774435876461
+"n_accommodates:f_neighbourhood_cleansedHigashimurayama Shi",NA,-0.382433833452149
+"n_accommodates:f_neighbourhood_cleansedItabashi Ku",NA,-0.183982275966824
+"n_accommodates:f_neighbourhood_cleansedKatsushika Ku",NA,-2.16619537889861
+"n_accommodates:f_neighbourhood_cleansedKita Ku",NA,-4.25131733661024
+"n_accommodates:f_neighbourhood_cleansedKodaira Shi",NA,-0.000511856085942459
+"n_accommodates:f_neighbourhood_cleansedKoganei Shi",NA,-0.0217716649994098
+"n_accommodates:f_neighbourhood_cleansedKomae Shi",NA,0.0254566854944856
+"n_accommodates:f_neighbourhood_cleansedKoto Ku",NA,-1.23707737761307
+"n_accommodates:f_neighbourhood_cleansedMachida Shi",NA,-0.0022744490621413
+"n_accommodates:f_neighbourhood_cleansedMeguro Ku",NA,3.28871733307005
+"n_accommodates:f_neighbourhood_cleansedMinato Ku",NA,4.17070042604611
+"n_accommodates:f_neighbourhood_cleansedNakano Ku",NA,4.95611554841832
+"n_accommodates:f_neighbourhood_cleansedNishitokyo Shi",NA,-1.85008572416002
+"n_accommodates:f_neighbourhood_cleansedOme Shi",NA,-1.88365702734754
+"n_accommodates:f_neighbourhood_cleansedOta Ku",NA,6.40680603132552
+"n_accommodates:f_neighbourhood_cleansedSetagaya Ku",NA,0.338215527270778
+"n_accommodates:f_neighbourhood_cleansedShibuya Ku",NA,4.98986173284637
+"n_accommodates:f_neighbourhood_cleansedShinjuku Ku",NA,5.56232105362865
+"n_accommodates:f_neighbourhood_cleansedSumida Ku",NA,-0.0826344713044738
+"n_accommodates:f_neighbourhood_cleansedTaito Ku",NA,1.63659422520803
+"n_beds",5.43752358478997,5.65100150633294
+"n_days_since",0.0235644961798075,7.79595097413928
+"n_number_of_reviews",-0.187228601393543,-5.15870031167256
+"n_review_scores_rating",0.553746075689453,2.67034474420864

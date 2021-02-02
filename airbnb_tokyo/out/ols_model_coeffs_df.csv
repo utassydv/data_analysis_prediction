@@ -1,98 +1,53 @@
 "variable","ols_coefficient"
-"(Intercept)",-42.7474480243327
-"n_accommodates",13.8024267113278
-"n_beds",5.17263182645847
-"n_days_since",0.0221398008438449
-"f_neighbourhood_cleansedAkiruno Shi",-1.34367002135351
-"f_neighbourhood_cleansedAkishima Shi",8.37222116705266
-"f_neighbourhood_cleansedArakawa Ku",18.3521426058343
-"f_neighbourhood_cleansedBunkyo Ku",43.3502907559865
-"f_neighbourhood_cleansedChiyoda Ku",87.2151194165472
+"(Intercept)",-61.8296603410795
+"n_accommodates",14.6264795962688
+"n_beds",5.43752358478997
+"n_days_since",0.0235644961798075
+"f_neighbourhood_cleansedAkiruno Shi",-6.65291425558636
+"f_neighbourhood_cleansedAkishima Shi",-4.84436411609095
+"f_neighbourhood_cleansedArakawa Ku",12.2935069276137
+"f_neighbourhood_cleansedBunkyo Ku",31.6446720614472
+"f_neighbourhood_cleansedChiyoda Ku",80.8331595322502
 "f_neighbourhood_cleansedChofu Shi",NA
-"f_neighbourhood_cleansedChuo Ku",21.8220296804478
-"f_neighbourhood_cleansedEdogawa Ku",3.55154515758885
+"f_neighbourhood_cleansedChuo Ku",20.6035405914696
+"f_neighbourhood_cleansedEdogawa Ku",-3.96024085990518
 "f_neighbourhood_cleansedFuchu Shi",NA
-"f_neighbourhood_cleansedFussa Shi",-53.9211059177563
-"f_neighbourhood_cleansedHamura Shi",79.6663472179531
-"f_neighbourhood_cleansedHigashimurayama Shi",2.74152759831394
-"f_neighbourhood_cleansedHino Shi",-22.3008236689385
-"f_neighbourhood_cleansedItabashi Ku",17.8293412338734
-"f_neighbourhood_cleansedKatsushika Ku",6.61450705926138
-"f_neighbourhood_cleansedKita Ku",-3.08558818137247
-"f_neighbourhood_cleansedKodaira Shi",12.5955273777615
-"f_neighbourhood_cleansedKoganei Shi",-56.2097366857797
-"f_neighbourhood_cleansedKokubunji Shi",51.1038260292302
-"f_neighbourhood_cleansedKomae Shi",151.256642787363
-"f_neighbourhood_cleansedKoto Ku",2.32464451427138
-"f_neighbourhood_cleansedKunitachi Shi",8.43842970763822
-"f_neighbourhood_cleansedMachida Shi",-13.682295561004
-"f_neighbourhood_cleansedMeguro Ku",65.2883280739587
-"f_neighbourhood_cleansedMinato Ku",83.6194272702877
-"f_neighbourhood_cleansedMitaka Shi",50.8640828178074
-"f_neighbourhood_cleansedMusashino Shi",63.7697372352122
-"f_neighbourhood_cleansedNakano Ku",32.5277364728967
-"f_neighbourhood_cleansedNerima Ku",12.8257201461307
-"f_neighbourhood_cleansedNishitokyo Shi",47.5315742313319
-"f_neighbourhood_cleansedOme Shi",-86.9215992212281
-"f_neighbourhood_cleansedOta Ku",25.2308186136025
-"f_neighbourhood_cleansedSetagaya Ku",28.6819067662076
-"f_neighbourhood_cleansedShibuya Ku",58.1768401817466
-"f_neighbourhood_cleansedShinagawa Ku",34.6756995059648
-"f_neighbourhood_cleansedShinjuku Ku",36.9531565428896
-"f_neighbourhood_cleansedSuginami Ku",18.2533919230098
-"f_neighbourhood_cleansedSumida Ku",17.0052263053151
-"f_neighbourhood_cleansedTachikawa Shi",116.987350711512
-"f_neighbourhood_cleansedTaito Ku",32.8155027142399
-"f_neighbourhood_cleansedTama Shi",-19.4097788852608
-"f_neighbourhood_cleansedToshima Ku",29.299080372091
-"f_room_typePrivate room",0.787858904984028
-"f_room_typeShared room",-4.68255799415178
-"n_number_of_reviews",-0.149793140174031
-"flag_n_number_of_reviews",-35.6135383693865
-"n_review_scores_rating",0.412447091444413
-"flag_review_scores_rating",43.2137993095015
-"d_airconditioning",6.66979567094748
-"d_bathtub",5.90174844115259
-"d_bedlinens",-5.28610886193702
-"d_bodysoap",-6.42338651823099
-"d_carbonmonoxidealarm",-10.5708871211167
-"d_coffeemaker",7.12694704536656
-"d_conditioner",-11.1196732472003
-"d_cookingbasics",4.80598139040326
-"d_dedicatedworkspace",1.80500983618369
-"d_dishesandsilverware",4.98135139588579
-"d_dryer",2.12195268863765
-"d_elevator",5.03233698341116
-"d_essentials",5.80477934298766
-"d_ethernetconnection",7.76249422704754
-"d_extrapillowsandblankets",6.35651178230138
-"d_fireextingr",-5.03368664304123
-"d_firstaidkit",-1.82485794249154
-"d_hairdryer",-1.5555786932784
-"d_hangers",1.66465307488242
-"d_heating",2.2491924051438
-"d_hotthampoo",-23.9050605239194
-"d_hotwater",-8.20576115685953
-"d_iron",0.186389193142954
-"d_keypad",2.13601817398603
-"d_kitchen",-1.73446018800833
-"d_ledropoffallowed",0.0631787674149214
-"d_lockonbedroomdoor",8.48790331057953
-"d_lockbox",-11.9580423012653
-"d_longtermstaysallowed",1.06866305238248
-"d_microwave",6.79256817108738
-"d_oven",3.3539360675309
-"d_paidparkingoffpremises",-1.16586383650372
-"d_patioorbalcony",-0.134778355610408
-"d_privateentrance",7.02909883717273
-"d_refrigerator",-13.3794555191899
-"d_roomdarkeningshades",-7.29703857353997
-"d_shampoo",-17.4410105423619
-"d_showergel",9.15525720179652
-"d_singlelevelhome",-4.36155151152094
-"d_smartlock",2.01361197907481
-"d_smokealarm",8.02922381195629
-"d_washer",-2.78157914239353
-"d_stove_gas_or_elect",1.19773257951242
-"d_tv",2.20292277270702
-"d_wifi",1.11201332875351
+"f_neighbourhood_cleansedFussa Shi",-26.061140803778
+"f_neighbourhood_cleansedHamura Shi",68.2100087202092
+"f_neighbourhood_cleansedHigashimurayama Shi",-3.1937491567378
+"f_neighbourhood_cleansedHino Shi",-29.6064531095527
+"f_neighbourhood_cleansedItabashi Ku",11.3174920514658
+"f_neighbourhood_cleansedKatsushika Ku",1.02219924361545
+"f_neighbourhood_cleansedKita Ku",-14.1055046105768
+"f_neighbourhood_cleansedKodaira Shi",-15.3509595665252
+"f_neighbourhood_cleansedKoganei Shi",-46.9670244502484
+"f_neighbourhood_cleansedKokubunji Shi",34.9628975106161
+"f_neighbourhood_cleansedKomae Shi",141.981752572915
+"f_neighbourhood_cleansedKoto Ku",-2.93936264181774
+"f_neighbourhood_cleansedKunitachi Shi",-4.19435259581464
+"f_neighbourhood_cleansedMachida Shi",-30.4959167357297
+"f_neighbourhood_cleansedMeguro Ku",61.6610240297986
+"f_neighbourhood_cleansedMinato Ku",52.8639604959873
+"f_neighbourhood_cleansedMitaka Shi",42.9406709611729
+"f_neighbourhood_cleansedMusashino Shi",59.8250814609107
+"f_neighbourhood_cleansedNakano Ku",19.6315468539362
+"f_neighbourhood_cleansedNerima Ku",14.3865117774013
+"f_neighbourhood_cleansedNishitokyo Shi",55.1029517286494
+"f_neighbourhood_cleansedOme Shi",-87.6467914020404
+"f_neighbourhood_cleansedOta Ku",20.8480167512146
+"f_neighbourhood_cleansedSetagaya Ku",19.1034933904801
+"f_neighbourhood_cleansedShibuya Ku",52.4546642642401
+"f_neighbourhood_cleansedShinagawa Ku",30.0592192945392
+"f_neighbourhood_cleansedShinjuku Ku",28.8019936239264
+"f_neighbourhood_cleansedSuginami Ku",15.8311812183199
+"f_neighbourhood_cleansedSumida Ku",7.45903307111833
+"f_neighbourhood_cleansedTachikawa Shi",108.800863847908
+"f_neighbourhood_cleansedTaito Ku",25.3286459374694
+"f_neighbourhood_cleansedTama Shi",-21.069534619723
+"f_neighbourhood_cleansedToshima Ku",21.4732906878096
+"f_room_typePrivate room",-5.54557848670402
+"f_room_typeShared room",-6.02021952250145
+"n_number_of_reviews",-0.187228601393543
+"flag_n_number_of_reviews",-32.1462444055152
+"n_review_scores_rating",0.553746075689453
+"flag_review_scores_rating",36.0062414517338
