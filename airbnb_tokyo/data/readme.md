@@ -1,0 +1,1 @@
+[This google sheet](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit#gid=982310896) is an official dictionary about the variables in the raw data
