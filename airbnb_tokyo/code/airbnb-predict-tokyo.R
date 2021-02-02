@@ -630,8 +630,7 @@ final_models <-
        "CART" = cart_model,
        "Random forest (smaller model)" = rf_model_1,
        "Random forest" = rf_model_2,
-       "GBM (basic tuning)"  = gbm_model,
-       "GBM (broad tuning)" = gbm_model2)
+       "GBM (basic tuning)"  = gbm_model)
 
 results <- resamples(final_models) %>% summary()
 
@@ -665,3 +664,30 @@ write.csv(result_5, paste0(output, "horse_race_of_models_houldout_rmse.csv"), ro
 #ch16-table-2-performance-across-subsamples
 #ch16-table-3-horse-race-of-models-cv-rmse
 
+# Predicted values
+predictionlev_holdout_pred <- as.data.frame(predict(rf_model_2, newdata = data_holdout, interval="predict"))
+predictionlev_holdout_conf <- as.data.frame(predict(rf_model_2, newdata = data_holdout, interval="confidence"))
+
+
+
+predictionlev_holdout <- cbind(data_holdout[,c("usd_price_day","n_accommodates")],
+                               predictionlev_holdout_pred)
+
+
+# Create data frame with the real and predicted values
+d <- data.frame(ylev=predictionlev_holdout[,"usd_price_day"], predlev=predictionlev_holdout[,3] )
+# Check the differences
+
+# Plot predicted vs price
+level_vs_pred <- ggplot(data = d) +
+  geom_point(aes(y=ylev, x=predlev), color = color[1], size = 1,
+             shape = 16, alpha = 0.7, show.legend=FALSE, na.rm=TRUE) +
+  #geom_smooth(aes(y=ylev, x=predlev), method="lm", color=color[2], se=F, size=0.8, na.rm=T)+
+  geom_segment(aes(x = 0, y = 0, xend = 350, yend =350), size=0.5, color=color[2], linetype=2) +
+  coord_cartesian(xlim = c(0, 250), ylim = c(0, 250)) +
+  scale_x_continuous(expand = c(0.01,0.01),limits=c(0, 350), breaks=seq(0, 350, by=50)) +
+  scale_y_continuous(expand = c(0.01,0.01),limits=c(0, 350), breaks=seq(0, 350, by=50)) +
+  labs(y = "Price (US dollars)", x = "Predicted price  (US dollars)") +
+  theme_bg() 
+level_vs_pred
+save_fig("ch14-figure-8a-level-vs-pred", output, "small")

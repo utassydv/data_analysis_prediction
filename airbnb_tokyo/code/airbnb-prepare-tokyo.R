@@ -178,7 +178,7 @@ summary(data$usd_price_day)
 data <- data %>%
   mutate(ln_usd_price_day = log(usd_price_day))
 data <- data %>%
-  filter(usd_price_day <275)
+  filter(usd_price_day <500)
 
 
 # Squares and further values to create

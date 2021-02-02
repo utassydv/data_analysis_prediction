@@ -1,8 +1,7 @@
 "","CV RMSE"
-"OLS",43.2347561860121
-"LASSO (model w/ interactions)",42.9441258698388
-"CART",45.7285100115012
-"Random forest (smaller model)",43.7410091621822
-"Random forest",37.3947007724893
-"GBM (basic tuning)",38.3849657704346
-"GBM (broad tuning)",37.6988889905498
+"OLS",62.0644703094079
+"LASSO (model w/ interactions)",60.6349171097845
+"CART",63.4557807716914
+"Random forest (smaller model)",61.1401770580843
+"Random forest",52.9396604857968
+"GBM (basic tuning)",55.9046073488198
