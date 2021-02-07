@@ -1,19 +1,5 @@
 #########################################################################################
-# Prepared for Gabor's Data Analysis
-#
-# Data Analysis for Business, Economics, and Policy
-# by Gabor Bekes and  Gabor Kezdi
-# Cambridge University Press 2021
-#
-# gabors-data-analysis.com 
-#
-# License: Free to share, modify and use for educational purposes. 
-# 	Not to be used for commercial purposes.
-
-# Chapter 17
-# CH17A
-# using the bisnode-firmd dataset
-# version 0.9 2020-09-10
+# Data Preperation
 #########################################################################################
 
 
@@ -285,8 +271,8 @@ data <- data %>%
          ind2_cat = factor(ind2_cat, levels = sort(unique(data$ind2_cat))))
 
 data <- data %>%
-  mutate(fast_growing_f = factor(fast_growing, levels = c(0,1)) %>%
-           recode(., `0` = 'not_fast_growing', `1` = "fast_growing"))
+  mutate(fast_growing_f = factor(fast_growing, levels = c(FALSE,TRUE)) %>%
+           recode(., `FALSE` = 'not_fast_growing', `TRUE` = "fast_growing"))
 
 ########################################################################
  # sales 
