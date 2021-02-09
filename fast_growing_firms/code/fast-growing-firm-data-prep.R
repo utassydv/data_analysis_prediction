@@ -49,11 +49,6 @@ source("code/helper/da_helper_functions.R")
 
 data_in <- paste(data_dir,"bisnode-firms","clean/", sep = "/")
 
-data_out <- 
-output <- paste0(use_case_dir,"output/")
-create_output_if_doesnt_exist(output)
-
-
 
 ###########################################################
 # Import data
@@ -364,8 +359,8 @@ write_rds(data,paste0(data_in,"bisnode_firms_clean.rds"))
 ggplot(data, aes(data$d1_sales_mil_log_mod)) + geom_histogram(binwidth = 0.1) 
 
 
-ggplot(data, aes(data$growth_two_years)) + geom_histogram(binwidth = 0.1) +
-  xlim(-3,20)
+ggplot(data, aes(data$growth_two_years * 100)) + geom_histogram(binwidth = 10) +
+  xlim(-300,2000)
 
 summary(data$growth_two_years)
 describe(data$fast_growing)

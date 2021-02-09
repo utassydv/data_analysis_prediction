@@ -60,8 +60,13 @@ create_output_if_doesnt_exist(output)
 data <- read_rds(paste(data_in,"bisnode_firms_clean.rds", sep = "/"))
 
 #summary
-#datasummary_skim(data, type='numeric', histogram = TRUE)
+# datasummary_skim(data, type='numeric', histogram = TRUE)
 # datasummary_skim(data, type="categorical")
+
+growth_hist<- ggplot( data , aes( x = growth_two_years * 100 ) ) +
+  geom_histogram( aes(y = ..density..) , alpha = 1, binwidth = 30, color = 'black', fill = "#3a5e8cFF")+
+  xlim(-100,2000)+
+  labs(x='Sales growth / 2 year [%]',y='Density')
 
 
 # Define variable sets ----------------------------------------------
@@ -298,6 +303,9 @@ nvars[["LASSO"]] <- sum(lasso_coeffs != 0)
 logit_summary1 <- data.frame("Number of predictors" = unlist(nvars),
                              "CV RMSE" = unlist(CV_RMSE),
                              "CV AUC" = unlist(CV_AUC))
+rownames(logit_summary1) <- c("Logit M1", "Logit M2", "Logit M3", "Logit M4", "Logit M5", "Logit LASSO")
+colnames(logit_summary1) <- c("Number of predictors", "CV RMSE", "CV AUC")
+logit_summary1
 
 kable(x = logit_summary1, format = "html", booktabs=TRUE,  digits = 3, row.names = TRUE,
       linesep = "", col.names = c("Number of predictors","CV RMSE","CV AUC")) %>%
@@ -305,7 +313,7 @@ kable(x = logit_summary1, format = "html", booktabs=TRUE,  digits = 3, row.names
 
 # Take best model and estimate RMSE on holdout  -------------------------------------------
 
-best_logit_no_loss <- logit_models[["X4"]]
+best_logit_no_loss <- logit_models[["LASSO"]]
 
 logit_predicted_probabilities_holdout <- predict(best_logit_no_loss, newdata = data_holdout, type = "prob")
 data_holdout[,"best_logit_no_loss_pred"] <- logit_predicted_probabilities_holdout[,"fast_growing"]
@@ -696,17 +704,29 @@ summary_results <- data.frame("Number of predictors" = unlist(nvars),
                               "CV threshold" = unlist(best_tresholds),
                               "CV expected Loss" = unlist(expected_loss))
 
-model_names <- c("Logit X1", "Logit X4",
-                 "Logit LASSO","RF probability")
+summary_results_p <- data.frame("Number of predictors" = unlist(nvars),
+                              "CV RMSE" = unlist(CV_RMSE),
+                              "CV AUC" = unlist(CV_AUC))
+
+model_names <- c("Logit M1","Logit M2","Logit M3", "Logit M4", "Logit M5",
+                 "Logit LASSO","RF Probability")
+
 summary_results <- summary_results %>%
-  filter(rownames(.) %in% c("X1", "X4", "LASSO", "rf_p"))
+  filter(rownames(.) %in% c("X1","X2", "X3", "X4","X5", "LASSO", "rf_p"))
 rownames(summary_results) <- model_names
+
+summary_results_p <- summary_results_p %>%
+  filter(rownames(.) %in% c("X1","X2", "X3", "X4","X5", "LASSO", "rf_p"))
+rownames(summary_results_p) <- model_names
 
 kable(x = summary_results, format = "latex", booktabs=TRUE,  digits = 3, row.names = TRUE,
       linesep = "", col.names = c("Number of predictors", "CV RMSE", "CV AUC",
                                   "CV threshold", "CV expected Loss")) %>%
   cat(.,file= paste0(output, "summary_results.tex"))
 
+colnames(summary_results) <- c("Number of predictors", "CV RMSE", "CV AUC", "CV threshold", "CV expected Loss")
+colnames(summary_results_p) <- c("Number of predictors", "CV RMSE")
 summary_results
+
 
 
