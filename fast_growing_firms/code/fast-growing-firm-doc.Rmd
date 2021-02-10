@@ -758,7 +758,7 @@ The purpose of this writing is to document the second assignment for the course 
 
 The task was to build a model to predict the fast growth of firms. To put this into context the final prediction model of this project can serve a company investing in firms. The aim could be to find potential firms that will grow significantly in the future. 
 
-The whole analysis was written in R, and the code is available under this [GitHub repository](https://github.com/utassydv/data_analysis_prediction/tree/main/fast_growing_firms). We can separate the code into three parts. I prepared the data mainly in the "fast-growing-firm-data-prep.R" file, then the analysis and model building is done in the "fast-growing-firm-predicting.R" file, and the ".Rmd" file is responsible for creating this document itself. 
+The whole analysis was written in R, and the code is available under this [GitHub repository](https://github.com/utassydv/data_analysis_prediction/tree/main/fast_growing_firms). We can separate the code into three parts. I prepared the data mainly in the "fast-growing-firm-data-prep.R" file, then the analysis and model building is done in the "fast-growing-firm-predicting.R" file, and the "fast-growing-firm-doc.Rmd" file is responsible for creating this document itself. 
 
 ## Data
 
